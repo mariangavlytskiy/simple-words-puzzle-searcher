@@ -1,1 +1,0 @@
-Simple Words Puzzle Search
