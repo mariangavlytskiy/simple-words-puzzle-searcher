@@ -1,7 +1,7 @@
 Simple Words Puzzle Search
 
 * This is program to generate random words puzzle and searched specified words int it.
-
+* Works with python3.4. Also, use `virtualenv` to . 
 * To run you need to execute in the command line:
     * `--puzzle_size` -- desirable words puzzle; 
     * `--words` -- words that you try to find in the generated puzzle.
@@ -45,3 +45,15 @@ optional arguments:
                         Describes words which would be tried found in the
                         puzzle.
 ```
+
+* To install dependencies and run test you can use `Makefile`:
+    * To install dependencies run in the command line:
+```bash
+make dep
+```
+   * To run tests:
+  ```bash
+make test
+``` 
+ 
+>>>>>>> Stashed changes

@@ -20,34 +20,21 @@ class WordsSearcher:
         self._found_words = defaultdict(list)
 
     @staticmethod
-    def _puzzle_string_to_matrix(puzzle_string):
-        """
-        This method transforms puzzle string to list of the letters.
-
-        :param puzzle_string: words puzzle string. (e.g. "a a\na a")
-
-        :return: list of the letters.
-        """
-        if not isinstance(puzzle_string, str) or puzzle_string == "":
-            raise ValueError("wrong puzzle string.")
-        return [line.split(" ") for line in puzzle_string.split("\n")]
-
-    @staticmethod
     def _get_letter_by_coordinate(puzzle, x, y, direction, number_in_the_word):
         """
         This method returns word letter.
         :param puzzle: puzzle as 2D matrix [[str,... ]..].
-        :param x: possible word coordinate in the raw.
+        :param x: possible word coordinate in the row.
         :param y: possible word coordinate in the column.
         :param direction: tuple with direction values.
         :param number_in_the_word: order number in the possible word.
         :return:
         """
-        raw_index, column_index = (
+        row_index, column_index = (
             (x + number_in_the_word * direction.x),
             (y + number_in_the_word * direction.y),
         )
-        return puzzle[raw_index][column_index]
+        return puzzle[row_index][column_index]
 
     @staticmethod
     def _puzzle_letters_coordinates(puzzle_size):
@@ -65,16 +52,16 @@ class WordsSearcher:
         It checks that we have not go out from the puzzle boundaries.
 
         :param puzzle: puzzle as 2D matrix [[str,... ]..].
-        :param x: possible word coordinate in the raw.
+        :param x: possible word coordinate in the row.
         :param y: possible word coordinate in the column.
         :param direction: tuple with direction values.
         :param word_len: length of the searched word.
         :return: return any word with defined length.
         """
-        letter_raw = x + (word_len - 1) * direction.x
+        letter_row = x + (word_len - 1) * direction.x
         letter_col = y + (word_len - 1) * direction.y
         if (
-                check_boundaries(letter_raw, right=len(puzzle)-1) and
+                check_boundaries(letter_row, right=len(puzzle)-1) and
                 check_boundaries(letter_col, right=len(puzzle)-1)
         ):
             possible_word = "".join(
@@ -97,20 +84,20 @@ class WordsSearcher:
             if word == self._find_word_with_len(puzzle, x, y, d, len(word)):
                 return word
 
-    def find_words(self, puzzle_str, words_to_search):
+    def find_words(self, puzzle, words_to_search):
         """
-        This method returns all words that were found in the puzzle_str.
+        This method returns all words that were found in the puzzle.
 
         :param words_to_search: list of words.
-        :param puzzle_str: puzzle.
+        :param puzzle: puzzle.
         :return: list of found words.
         """
-        transformed_puzzle = self._puzzle_string_to_matrix(puzzle_str)
         matched_words = []
         for word in words_to_search:
             possible_words = self._found_words.get(len(word))
             if possible_words and word in possible_words:
                 matched_words.append(word)
-            elif self.find_word(transformed_puzzle, word):
+            elif self.find_word(puzzle, word):
                 matched_words.append(word)
+        self._found_words.clear()
         return matched_words

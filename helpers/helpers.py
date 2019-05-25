@@ -15,3 +15,13 @@ def check_boundaries(val, left=0, right=0) -> bool:
         raise TypeError("wrong val type. Should be number.")
 
     return left <= val <= right
+
+
+def read_from_file(filepath):
+    """
+    This function read words from specific file and returns list ow words.
+    :param filepath: 
+    :return:
+    """
+    with open(filepath, "r") as f:
+        return [word.strip("\n") for word in f.readlines()]
