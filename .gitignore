@@ -1,0 +1,7 @@
+*.pyc
+
+.pytest_cache/
+.banchmarks/
+.idea/
+venv/
+ENV/
