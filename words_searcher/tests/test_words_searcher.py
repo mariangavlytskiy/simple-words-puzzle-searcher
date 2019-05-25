@@ -62,25 +62,3 @@ def test_find_words(words_searcher):
                 TEST_PUZZLE_SIZE_2, WORDS_IN_PUZZLE_SIZE_2) ==
             WORDS_IN_PUZZLE_SIZE_2
     )
-
-
-@pytest.mark.parametrize(
-    "puzzle, words_to_find",
-    [
-        (TEST_PUZZLE_SIZE_10, WORDS_IN_PUZZLE_SIZE_10),
-        (TEST_PUZZLE_SIZE_2, WORDS_IN_PUZZLE_SIZE_2),
-    ],
-    ids=[
-        f"10_size_puzzle_{len(WORDS_IN_PUZZLE_SIZE_10)}_words_to_find",
-        f"puzzle_with_size_2_and_{len(WORDS_IN_PUZZLE_SIZE_2)}_words_to_find"
-    ]
-)
-def test_benchmark_words_searcher(
-    benchmark,
-    words_searcher,
-    puzzle,
-    words_to_find,
-):
-    @benchmark
-    def wrap():
-        words_searcher.find_words(puzzle, words_to_find)

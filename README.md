@@ -1,7 +1,8 @@
 Simple Words Puzzle Search
 
 * This is program to generate random words puzzle and searched specified words int it.
-* Works with python3.4. Also, use `virtualenv` to . 
+* Works with python3.7. 
+* Also, use `virtualenv`. 
 * To run you need to execute in the command line:
     * `--puzzle_size` -- desirable words puzzle; 
     * `--words` -- words that you try to find in the generated puzzle.
@@ -25,8 +26,8 @@ l e m i l v z w l x p g g y j
 r f k f u h t l l x g w n p p
 k s p s v x s j q k a n a s t
 k z e i a n c s w j u f j a f.
-Found words: ['col'].
-Not found words: ['colax', 'max', 'sadfsdfasdfasdf', 'aslks', 'qweqwe', 'asd', 'find']
+Found words: ['col', 'kanas'].
+Not found words: ['colax', 'max', 'sale', 'qwerty', 'asd', 'find']
 ```
 
 * To see help documentation run in the command line: 
@@ -55,5 +56,3 @@ make dep
   ```bash
 make test
 ``` 
- 
->>>>>>> Stashed changes

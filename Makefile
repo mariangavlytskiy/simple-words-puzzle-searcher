@@ -10,5 +10,5 @@ dep:
 	@echo "Necessary deps installed"		
 
 test:
-	@echo "Start to install dependencies."
+	@echo "Start to run test"
 	pytest -v 
