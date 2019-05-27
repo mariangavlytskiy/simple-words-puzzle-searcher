@@ -6,6 +6,7 @@ Simple Words Puzzle Search
 * To run you need to execute in the command line:
     * `--puzzle_size` -- desirable words puzzle; 
     * `--words` -- words that you try to find in the generated puzzle.
+    * `----filepath` -- path to file with words tha you want to find.
 
 ```bash
 python3 -m  main --puzzle_size 15 --words find col colax max asd qweqwe aslks sadfsdfasdfasdf
@@ -32,9 +33,9 @@ Not found words: ['colax', 'max', 'sale', 'qwerty', 'asd', 'find']
 
 * To see help documentation run in the command line: 
 ```bash
-python3 -m  main --help
-
+python3 -m main --help
 usage: main.py [-h] [--puzzle_size PUZZLE_SIZE] [--words WORDS [WORDS ...]]
+               [--filepath FILEPATH]
 
 This is program to search words in the random puzzle.
 
@@ -45,6 +46,7 @@ optional arguments:
   --words WORDS [WORDS ...]
                         Describes words which would be tried found in the
                         puzzle.
+  --filepath FILEPATH   Path to file with words
 ```
 
 * To install dependencies and run test you can use `Makefile`:
